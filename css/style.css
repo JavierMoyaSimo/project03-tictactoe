@@ -1,0 +1,10 @@
+h1 {
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.button {
+    background-color: rgb(255, 255, 255);
+    background-image: linear-gradient(to bottom right, rgb(234, 198, 198), rgb(161, 161, 26));
+}
