@@ -6,7 +6,7 @@ body {
     background-attachment: fixed;
 }
 
-
+/*Div with name of players and Human/CPU*/
 .square {
     background-color: rgba(245, 245, 245, 0.712);
 }

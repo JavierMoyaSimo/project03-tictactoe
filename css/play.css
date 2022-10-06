@@ -1,0 +1,18 @@
+body {
+    background-image:url(../img/tic-tac-toe-bkg.png);
+    background-size: cover;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;   
+}
+
+/*Size of the X and O || Color of X and 0*/
+.letter {
+    font-size: 2em;
+    color: white;
+}
+
+/*Background play-grid*/
+.bcg {
+    background-color: rgba(66, 59, 59, 0.945);
+}
