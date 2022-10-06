@@ -1,0 +1,32 @@
+body {
+    background-image: url(../img/tic-tac-toe-bkg.png);
+    background-size: cover;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+.square {
+    background-color: rgba(245, 245, 245, 0.712);
+}
+
+/* Start Button */
+.button {
+    background-color: rgb(255, 255, 255);
+    background-image: linear-gradient(to bottom right, rgb(234, 198, 198), rgb(161, 161, 26));
+}
+
+/* Player Selection title */
+.title {
+    color: rgba(16, 0, 0, 0.973);
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Player 1 and Player 2 titles */
+.name-player {
+    color: rgba(24, 16, 16, 0.772);
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
