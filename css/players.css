@@ -1,9 +1,11 @@
 body {
-    background-image: url(../img/tic-tac-toe-bkg.png);
+    /* background-image: url(../img/tic-tac-toe-bkg.png);
     background-size: cover;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
+*/
+    background-color: rgb(143, 145, 134);
 }
 
 /*Div with name of players and Human/CPU*/
@@ -14,7 +16,8 @@ body {
 /* Start Button */
 .button {
     background-color: rgb(255, 255, 255);
-    background-image: linear-gradient(to bottom right, rgb(234, 198, 198), rgb(161, 161, 26));
+    /* background-image: linear-gradient(to bottom right, rgb(234, 198, 198), rgb(161, 161, 26)); */
+    background-image: linear-gradient(to bottom right, rgb(234, 198, 198), rgb(173, 173, 27));
 }
 
 /* Player Selection title */

@@ -1,0 +1,166 @@
+body {
+    /* background-image:url(../img/tic-tac-toe-bkg.png);
+    background-size: cover;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;    */
+    background-color: rgb(143, 145, 134);
+    margin: 0;
+}
+
+/* Size of the X and O || Color of X and 0
+/* .letter {
+    font-size: 2em;
+    color: white;
+} */
+
+/*Background play-grid*/
+/* .bcg {
+    background-color: rgba(66, 59, 59, 0.945);
+} */
+
+/* MainDiv */
+#main {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(143, 145, 134);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+}
+
+/* Information Panel */
+#panelcontrol {
+    background-color: rgba(245, 245, 245, 0.712);
+    border: 1px solid black;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 60%;
+    height: 20%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 1em;
+}
+
+.piheight {
+    height: 25%;
+    margin: 0;
+}
+
+#tictactoe {
+    background-color: rgba(255, 254, 254, 0.667);
+    /* border: 1px solid black; */
+    width: 60%;
+    height: 35%;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.letter {
+    font-size: 3em;
+    
+}
+
+/* ROW 1( ARRIBA) */
+#row1 {
+    display: flex;
+    height: 33%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#r1-c1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 33%;
+    border-right: 3px solid black;
+}
+
+#r1-c2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 34%;
+}
+
+#r1-c3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 33%;
+    border-left: 3px solid black;
+}
+
+
+/* ROW 2(CENTRO) */
+#row2 {
+    display: flex;
+    height: 34%;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+#r2-c1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 33%;
+    border-right: 3px solid black;
+}
+
+#r2-c2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 34%;
+   
+}
+
+#r2-c3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 33%;
+    border-left: 3px solid black;
+}
+
+/* ROW 3 ABAJO */
+
+#row3 {
+    display: flex;
+    height: 33%;
+}
+
+#r3-c1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 33%;
+    border-right: 3px solid black;
+}
+
+#r3-c2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 34%;
+}
+
+#r3-c3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 33%;
+    border-left: 3px solid black;
+}
