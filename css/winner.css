@@ -1,0 +1,23 @@
+/*Tic Tac Toe title*/
+h1 {
+    color: rgba(16, 0, 0, 0.973);
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/*New Game button*/
+.button {
+    background-color: rgb(255, 255, 255);
+    background-image: linear-gradient(to bottom right, rgb(234, 198, 198), rgb(173, 173, 27));
+}
+
+body {
+    /* background-image:url(../img/tic-tac-toe-bkg.png);
+    background-size: cover;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;    */
+
+    background-color: rgb(143, 145, 134);
+    
+}
