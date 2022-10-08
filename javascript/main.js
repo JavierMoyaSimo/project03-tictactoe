@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 // Funcion al darle click al boton de enviar (Datos PLAYER 1)
 FunctionSaveNameOne = () => {
 
@@ -26,15 +18,15 @@ FunctionSaveNameOne = () => {
     if ((radioHumanOneValue == true || radioCpuOneValue == true) && (saveName != "")) {
         // Guardo el valor del input 1 en localstorage
         localStorage.setItem("nameOfPlayerOne", saveName);
-        console.log(localStorage.getItem("nameOfPlayerOne"));
+
 
         // Guardo el valor del boton radioHuman1 en localstorage
         localStorage.setItem("valueOfHuman1", radioHumanOneValue);
-        console.log(localStorage.getItem("radioHumanOneValue"));
+
 
         // Guardo el valor del boton radioCpu1 en localstorage
         localStorage.setItem("valueOfCpu1", radioCpuOneValue);
-        console.log(localStorage.getItem("radioCpuOneValue"));
+
 
         // Introduzco en el parrafo el nombre del Player 1
         namePlayerOne.innerHTML = ` Player 1 : ${saveName}`;
@@ -73,7 +65,7 @@ FunctionSaveNameTwo = () => {
 
         // Guardo el valor del boton radioCpu2 en localstorage
         localStorage.setItem("valueOfCpu2", radioCpuTwoValue);
-        console.log(localStorage.getItem("radioCpuTwoValue"));
+
 
         // Introduzco en el parrafo el nombre del Player 2
         namePlayerTwo.innerHTML = ` Player 2 : ${saveNameTwo}`;
@@ -86,7 +78,7 @@ FunctionSaveNameTwo = () => {
     }
 }
 
-// Funcion para cambiar a play.html(HTML donde esta el propio juego)
+// Funcion para cambiar a play.html(HTML donde esta el propio juego) con el boton Start
 ChangeWindow = () => {
     if ((document.getElementById("namePlayerOne").innerHTML != "Player 1") && (document.getElementById("namePlayerTwo").innerHTML != "Player 2")) {
         document.getElementById("startButton").href = "./play.html";
@@ -95,3 +87,32 @@ ChangeWindow = () => {
     }
 };
 
+
+// INFORMATION PANEL (play.html)
+
+//Recupero el nameOfPlayerOne del localStorage
+let name1 = localStorage.getItem("nameOfPlayerOne");
+
+// Recupero el nameOfPlayerTwo del localStorage
+let name2 = localStorage.getItem("nameOfPlayerTwo");
+
+
+// Recupero el tipo de jugador 1 (Human o CPU):
+
+let typePlayer1 = localStorage.getItem("valueOfHuman1");
+console.log(typePlayer1)
+if (typePlayer1 == "true") {
+    document.getElementById("nameP1").innerHTML = `Player 1:  ${name1} - HUMAN`;
+} else {
+    document.getElementById("nameP1").innerHTML = `Player 1:  ${name1} - CPU`;
+}
+
+// Recupero el tipo de jugador 2 (Human o CPU):
+
+let typePlayer2 = localStorage.getItem("valueOfHuman2");
+
+if (typePlayer2 == "true") {
+    document.getElementById("nameP2").innerHTML = `Player 2:  ${name2} - HUMAN`;
+} else {
+    document.getElementById("nameP2").innerHTML = `Player 2:  ${name2} - CPU`;
+}
