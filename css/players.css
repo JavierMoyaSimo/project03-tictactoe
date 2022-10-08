@@ -24,12 +24,12 @@ body {
 .title {
     color: rgba(16, 0, 0, 0.973);
     font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 /* Player 1 and Player 2 titles */
 .name-player {
     color: rgba(24, 16, 16, 0.772);
     font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

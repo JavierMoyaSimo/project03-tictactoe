@@ -2,13 +2,17 @@
 h1 {
     color: rgba(16, 0, 0, 0.973);
     font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 3em;
+    margin-bottom: 1em;
+    margin-top: 1em;
 }
 
 /*New Game button*/
 .button {
     background-color: rgb(255, 255, 255);
     background-image: linear-gradient(to bottom right, rgb(234, 198, 198), rgb(173, 173, 27));
+    margin-bottom: 3em;
 }
 
 body {
