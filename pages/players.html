@@ -21,62 +21,34 @@
         <div class="container text-center">
             <p class="h1 mb-5 title">Player selection</p>
             <div class="container square">
-                <div class="d-flex justify-content-between">
-                    <p class="h4 name-player">Player 1</p>
-                    <div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" req name="flexRadioDefault1"
-                                id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                Human
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault1"
-                                id="flexRadioDefault2">
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                CPU
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                <form label="Player1">
+                    <label for="Player1">Player 1:</label>
+                    <br>
+                    <input type="text" name="nameOfPlayerOne" id="inputPlayerOne" placeholder="Enter name of player 1..." required="true">
+                    <fieldset>
+                        <input type="radio" name="human1" id="radioHuman1">
+                        <label for="radioHuman1">Human</label>
+                        <input type="radio" name="cpu1" id="radioCpu1" required="true">
+                        <label for="radioCpu1">CPU</label>
+                    </fieldset>
+                    <button type="submit" id="saveNamePlayer1" onclick="FunctionSaveNameOne()">Confirm</button>
+                </form>
+                <form label="Player2">
+                    <label for="Player2">Player 2:</label>
+                    <br>
+                    <input type="text" name="nameOfPlayerTwo" id="inputPlayerTwo" placeholder="Enter name of player 2..." required="true">
+                    <fieldset>
+                        <input type="radio" name="human2" id="radioHuman2" required="true">
+                        <label for="radioHuman2">Human</label>
+                        <input type="radio" name="cpu2" id="radioCpu2">
+                        <label for="radioCpu2">CPU</label>
+                    </fieldset>
+                    <button type="submit" onclick="FunctionSaveNameTwo()">Confirm</button>
+                </form>
 
-                <div class="input-group mb-4">
-                    <input id="inputPlayerOne" type="text" placeholder="Enter the name of player one..."
-                        class="form-control">
-                    <button id="saveNamePlayer1" type="submit" class="ms-2"
-                        onclick="FunctionSaveNameOne()">Enviar</button>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <p class="h4 name-player">Player 2</p>
-                    <div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault2"
-                                id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                Human
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault2"
-                                id="flexRadioDefault2">
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                CPU
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div  class="input-group pb-4">
-                    <input id="inputPlayerTwo" type="text" placeholder="Enter the name of player two..."
-                        class="form-control">
-                    <button id="saveNamePlayer2" type="submit" class="ms-2" onclick="FunctionSaveNameTwo()">Enviar</button>
-                </div>
             </div>
         </div>
-
-
         <a href="./play.html" class="btn button active mt-3">Start</a>
-    </div>
     </div>
     <script src="../javascript/main.js"></script>
 </body>

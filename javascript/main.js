@@ -1,7 +1,13 @@
 FunctionSaveNameOne = () => {
     let buttonOne = document.getElementById("inputPlayerOne");
+    let radioHOne = document.getElementById("radioHuman1");
+    let radioCOne = document.getElementById("radioCpu1");
+    let SaveRadioHOne = radioHOne.value;
+    let SaveRadioCOne = radioCOne.value;
     let SaveName = buttonOne.value;
     console.log(SaveName);
+    console.log(SaveRadioHOne);
+    console.log(SaveRadioCOne);
     localStorage.setItem("nameOfPlayerOne", SaveName);
     console.log(localStorage.getItem("nameOfPlayerOne"));
     buttonOne.value = "";
@@ -16,3 +22,7 @@ FunctionSaveNameTwo = () => {
     buttonTwo.value = "";
 
 }
+
+// if((buttonOne.value != "") && (radioHOne != "undefined" || radioCOne != "undefined") ){
+//     FunctionSaveNameOne();
+// }
