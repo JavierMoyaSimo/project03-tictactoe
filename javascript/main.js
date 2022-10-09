@@ -1,4 +1,3 @@
-
 // Funcion al darle click al boton de enviar (Datos PLAYER 1)
 FunctionSaveNameOne = () => {
 
@@ -38,7 +37,6 @@ FunctionSaveNameOne = () => {
         alert("Please, write your name and select if you are Human o CPU")
     }
 }
-
 
 // Funcion al darle click al boton de enviar (Datos PLAYER 2)
 FunctionSaveNameTwo = () => {
@@ -87,7 +85,6 @@ ChangeWindow = () => {
     }
 };
 
-
 // INFORMATION PANEL (play.html)
 
 //Recupero el nameOfPlayerOne del localStorage
@@ -96,27 +93,27 @@ let name1 = localStorage.getItem("nameOfPlayerOne");
 // Recupero el nameOfPlayerTwo del localStorage
 let name2 = localStorage.getItem("nameOfPlayerTwo");
 
-
 // Recupero el tipo de jugador 1 (Human o CPU) y lo escribo en el Panel de Informacion
-
 let typePlayer1 = localStorage.getItem("valueOfHuman1");
 
 if (typePlayer1 == "true") {
-    document.getElementById("nameP1").innerHTML = `Player 1:  ${name1} - HUMAN`;
+    var nameType1 = "HUMAN"; // Usamos var para que el foco sea general; asi ya estara definida fuera del if.
+    document.getElementById("nameP1").innerHTML = `Player 1:  ${name1} - ${nameType1} - X`;
 } else {
-    document.getElementById("nameP1").innerHTML = `Player 1:  ${name1} - CPU`;
+    var nameType1 = "CPU";
+    document.getElementById("nameP1").innerHTML = `Player 1:  ${name1} - ${nameType1} - X`;
 }
 
 // Recupero el tipo de jugador 2 (Human o CPU) y lo escribo en el Panel de Informacion
-
-
 let typePlayer2 = localStorage.getItem("valueOfHuman2");
 
 if (typePlayer2 == "true") {
-    document.getElementById("nameP2").innerHTML = `Player 2:  ${name2} - HUMAN`;
+    var nameType2 = "HUMAN";
+    document.getElementById("nameP2").innerHTML = `Player 2:  ${name2} - ${nameType2} - O`;
 } else {
-    document.getElementById("nameP2").innerHTML = `Player 2:  ${name2} - CPU`;
-}
+    var nameType2 = "CPU";
+    document.getElementById("nameP2").innerHTML = `Player 2:  ${name2} - ${nameType2} - O`;
+};
 
 
 
@@ -128,7 +125,6 @@ let arrayTicTacToe = new Array(3);
 arrayTicTacToe[0] = new Array(3);
 arrayTicTacToe[1] = new Array(3);
 arrayTicTacToe[2] = new Array(3);
-
 //Metemos un dato en cada posición
 arrayTicTacToe[0][0] = "";
 arrayTicTacToe[0][1] = "";
@@ -140,13 +136,27 @@ arrayTicTacToe[2][0] = "";
 arrayTicTacToe[2][1] = "";
 arrayTicTacToe[2][2] = "";
 
+// // Igualamos cada posicion del array a una variable nueva
+// var pos00 = arrayTicTacToe[0][0];
+// var pos01 = arrayTicTacToe[0][1];
+// var pos02 = arrayTicTacToe[0][2];
+// var pos10 = arrayTicTacToe[1][0];
+// var pos11 = arrayTicTacToe[1][1];
+// var pos12 = arrayTicTacToe[1][2];
+// var pos20 = arrayTicTacToe[2][0];
+// var pos21 = arrayTicTacToe[2][1];
+// var pos22 = arrayTicTacToe[2][2];
+
+// console.log(pos22);
+
+
 
 
 // OBETOS JUGADOR 1- JUGADOR 2
 
 // Creamos  CLASE Player
 class Player {
-    constructor(name, turn, type, symbol ) {
+    constructor(name, turn, type, symbol) {
         this.name = name;
         this.turn = turn;
         this.type = type;
@@ -166,8 +176,12 @@ class Player {
 
 //INSTANCIAMOS 2 Jugadores
 
-let player1 = new Player(name1, 0, typePlayer1, "X");
-let player2 = new Player(name2, 0, typePlayer2, "Y");
+
+
+let player1 = new Player(name1, 0, nameType1, "X");
+let player2 = new Player(name2, 0, nameType2, "Y");
+
+
 
 
 
@@ -179,297 +193,507 @@ let myTurn = true;
 if (turnoAleatorio % 2 == 0) {
     myTurn = true;
     document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
-    } else {
+} else {
     myTurn = false;
-    document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;    
+    document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
 }
+
+// Funcion comprobar si hay un winner:
+const Winner = () => {
+
+    switch (arrayTicTacToe) {
+        case ((arrayTicTacToe[0][0] == "X") && (arrayTicTacToe[0][1] == "X") && (arrayTicTacToe[0][2] == "X")):
+            console.log("HAS GANADO JUGADOR 1. COMBINACION: FILA 1");
+            break;
+        case ((arrayTicTacToe[1][0] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[1][2] == "X")):
+            console.log("HAS GANADO JUGADOR 1 . COMBINACION: FILA 2");
+            break;
+        case ((arrayTicTacToe[2][0] == "X") && (arrayTicTacToe[2][1] == "X") && (arrayTicTacToe[2][2] == "X")):
+            console.log("HAS GANADO JUGADOR 1. COMBINACION: FILA 3");
+            break;
+        case ((arrayTicTacToe[0][0] == "X") && (arrayTicTacToe[1][0] == "X") && (arrayTicTacToe[2][0] == "X")):
+            console.log("HAS GANADO JUGADOR 1. COMBINACION: COLUMNA 1");
+            break;
+        case ((arrayTicTacToe[0][1] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[2][1] == "X")):
+            console.log("HAS GANADO JUGADOR 1. COMBINACION: COLUMNA 2");
+            break;
+        case ((arrayTicTacToe[0][2] == "X") && (arrayTicTacToe[1][2] == "X") && (arrayTicTacToe[2][2] == "X")):
+            console.log("HAS GANADO JUGADOR 1. COMBINACION: COLUMNA 3");
+            break;
+        case ((arrayTicTacToe[0][0] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[2][2] == "X")):
+            console.log("HAS GANADO JUGADOR 1. COMBINACION: DIAGONAL 1");
+            break;
+        case ((arrayTicTacToe[2][0] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[0][2] == "X")):
+            console.log("HAS GANADO JUGADOR 1. COMBINACION: DIAGONAL 2");
+            break;
+        case ((arrayTicTacToe[0][0] == "O") && (arrayTicTacToe[0][1] == "O") && (arrayTicTacToe[0][2] == "O")):
+            console.log("HAS GANADO JUGADOR 2. COMBINACION: FILA 1");
+            break;
+        case ((arrayTicTacToe[1][0] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[1][2] == "O")):
+            console.log("HAS GANADO JUGADOR 2 . COMBINACION: FILA 2");
+            break;
+        case ((arrayTicTacToe[2][0] == "O") && (arrayTicTacToe[2][1] == "O") && (arrayTicTacToe[2][2] == "O")):
+            console.log("HAS GANADO JUGADOR 2. COMBINACION: FILA 3");
+            break;
+
+        case ((arrayTicTacToe[0][0] == "O") && (arrayTicTacToe[1][0] == "O") && (arrayTicTacToe[2][0] == "O")):
+            console.log("HAS GANADO JUGADOR 2. COMBINACION: COLUMNA 1");
+            break;
+        case ((arrayTicTacToe[0][1] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[2][1] == "O")):
+            console.log("HAS GANADO JUGADOR 2. COMBINACION: COLUMNA 2");
+            break;
+        case ((arrayTicTacToe[0][2] == "O") && (arrayTicTacToe[1][2] == "O") && (arrayTicTacToe[2][2] == "O")):
+            console.log("HAS GANADO JUGADOR 2. COMBINACION: COLUMNA 3");
+            break;
+        case ((arrayTicTacToe[0][0] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[2][2] == "O")):
+            console.log("HAS GANADO JUGADOR 2. COMBINACION: DIAGONAL 1");
+            break;
+        case ((arrayTicTacToe[2][0] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[0][2] == "O")):
+            console.log("HAS GANADO JUGADOR 2. COMBINACION: DIAGONAL 2");
+            break;
+        default:
+            console.log("NO FUNCIONA");
+            break;
+
+    }
+}
+
+
+//Funcion comprobar fila
+
+// const ComprobarFila = () =>{
+//     for (let i = 0; i < arrayTicTacToe.length; i++) {
+//         if (((arrayTicTacToe[i][0] === arrayTicTacToe[i][1]) && (arrayTicTacToe[i][1] === arrayTicTacToe[i][2])) && 
+//         (arrayTicTacToe[i][0] !== "") && (arrayTicTacToe[i][1] !== "")(arrayTicTacToe[i][2] !== "")) {
+//             console.log("De puta mare");
+//         }
+//     }
+// }
 
 
 
 // Funcion llamada al pulsar row1-col1
 TopLeftPush = () => {
-    if( myTurn == true){   // LE TOCARIA AL JUGADOR 1
+    if (myTurn == true) {   // LE TOCARIA AL JUGADOR 1
 
         //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-   if((player1.turn < 3) && ( arrayTicTacToe[0][0] == "")){
-    arrayTicTacToe[0][0] = "X";
-    document.getElementById("r1-c1").innerHTML = "X";
-    player1.turn ++; 
-    myTurn = false;
-    document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
-   } else if ((player1.turn >= 3) && ( arrayTicTacToe[0][0] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
-    document.getElementById("r1-c1").innerHTML = "";
-    arrayTicTacToe[0][0] = "";
-   }
-   
-} else {                   //LE TOCARIA AL JUGADOR 2
-    //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-    if((player2.turn < 3) && ( arrayTicTacToe[0][0] == "")){
-        arrayTicTacToe[0][0] = "O"
-        document.getElementById("r1-c1").innerHTML = "O";
-        player2.turn ++
-        myTurn = true;
-        document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
-      } else if ((player2.turn >= 3) && ( arrayTicTacToe[0][0] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
-        document.getElementById("r1-c1").innerHTML = "";
-        arrayTicTacToe[0][0] = "";
-       }
-}
+        if ((player1.turn < 3) && (arrayTicTacToe[0][0] == "")) {
+            arrayTicTacToe[0][0] = "X";
+            document.getElementById("r1-c1").innerHTML = "X";
+            console.log(arrayTicTacToe);
+            // ComprobarFila();
+            Winner();
+            player1.turn++;
+            myTurn = false;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
+        } else if ((player1.turn >= 3) && (arrayTicTacToe[0][0] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
+            document.getElementById("r1-c1").innerHTML = "";
+            arrayTicTacToe[0][0] = "";
+            console.log(arrayTicTacToe);
+            // ComprobarFila();
+            Winner();
+            player1.turn--;
+
+        }
+
+    } else {                   //LE TOCARIA AL JUGADOR 2
+        //Si aun no ha realizado 3 turnos y la casilla esta vacia:
+        if ((player2.turn < 3) && (arrayTicTacToe[0][0] == "")) {
+            arrayTicTacToe[0][0] = "O"
+            document.getElementById("r1-c1").innerHTML = "O";
+            console.log(arrayTicTacToe);
+            // ComprobarFila();
+            Winner();
+            player2.turn++
+            myTurn = true;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
+        } else if ((player2.turn >= 3) && (arrayTicTacToe[0][0] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
+            document.getElementById("r1-c1").innerHTML = "";
+            arrayTicTacToe[0][0] = "";
+            console.log(arrayTicTacToe);
+            // ComprobarFila();
+            Winner();
+            player2.turn--;
+        }
+    }
 };
 
 
 // Funcion llamada al pulsar row1-col2
 TopCenterPush = () => {
-    if( myTurn == true){   // LE TOCARIA AL JUGADOR 1
+    if (myTurn == true) {   // LE TOCARIA AL JUGADOR 1
 
         //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-   if((player1.turn < 3) && ( arrayTicTacToe[0][1] == "")){
-    arrayTicTacToe[0][1] = "X";
-    document.getElementById("r1-c2").innerHTML = "X";
-    player1.turn ++; 
-    myTurn = false;
-    document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
-   } else if ((player1.turn >= 3) && ( arrayTicTacToe[0][1] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
-    document.getElementById("r1-c2").innerHTML = "";
-    arrayTicTacToe[0][1] = "";
-   }
-   
-} else {                   //LE TOCARIA AL JUGADOR 2
-    //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-    if((player2.turn < 3) && ( arrayTicTacToe[0][1] == "")){
-        arrayTicTacToe[0][1] = "O"
-        document.getElementById("r1-c2").innerHTML = "O";
-        player2.turn ++
-        myTurn = true;
-        document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
-      } else if ((player2.turn >= 3) && ( arrayTicTacToe[0][1] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
-        document.getElementById("r1-c2").innerHTML = "";
-        arrayTicTacToe[0][1] = "";
-       }
-}
+        if ((player1.turn < 3) && (arrayTicTacToe[0][1] == "")) {
+            arrayTicTacToe[0][1] = "X";
+            document.getElementById("r1-c2").innerHTML = "X";
+            console.log(arrayTicTacToe);
+            Winner();
+            player1.turn++;
+            myTurn = false;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
+        } else if ((player1.turn >= 3) && (arrayTicTacToe[0][1] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
+            document.getElementById("r1-c2").innerHTML = "";
+            arrayTicTacToe[0][1] = "";
+            console.log(arrayTicTacToe);
+            Winner();
+            player1.turn--;
+
+        }
+
+    } else {                   //LE TOCARIA AL JUGADOR 2
+        //Si aun no ha realizado 3 turnos y la casilla esta vacia:
+        if ((player2.turn < 3) && (arrayTicTacToe[0][1] == "")) {
+            arrayTicTacToe[0][1] = "O"
+            document.getElementById("r1-c2").innerHTML = "O";
+            console.log(arrayTicTacToe);
+            Winner();
+            player2.turn++
+            myTurn = true;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
+        } else if ((player2.turn >= 3) && (arrayTicTacToe[0][1] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
+            document.getElementById("r1-c2").innerHTML = "";
+            arrayTicTacToe[0][1] = "";
+            console.log(arrayTicTacToe);
+            Winner();
+            player2.turn--;
+        }
+    }
 }
 
 // Funcion llamada al pulsar row1-col3
 TopRightPush = () => {
-    if( myTurn == true){   // LE TOCARIA AL JUGADOR 1
+    if (myTurn == true) {   // LE TOCARIA AL JUGADOR 1
 
         //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-   if((player1.turn < 3) && ( arrayTicTacToe[0][2] == "")){
-    arrayTicTacToe[0][2] = "X";
-    document.getElementById("r1-c3").innerHTML = "X";
-    player1.turn ++; 
-    myTurn = false;
-    document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
-   } else if ((player1.turn >= 3) && ( arrayTicTacToe[0][2] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
-    document.getElementById("r1-c3").innerHTML = "";
-    arrayTicTacToe[0][2] = "";
-   }
-   
-} else {                   //LE TOCARIA AL JUGADOR 2
-    //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-    if((player2.turn < 3) && ( arrayTicTacToe[0][2] == "")){
-        arrayTicTacToe[0][2] = "O"
-        document.getElementById("r1-c3").innerHTML = "O";
-        player2.turn ++
-        myTurn = true;
-        document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
-      } else if ((player2.turn >= 3) && ( arrayTicTacToe[0][2] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
-        document.getElementById("r1-c3").innerHTML = "";
-        arrayTicTacToe[0][2] = "";
-       }
-}
+        if ((player1.turn < 3) && (arrayTicTacToe[0][2] == "")) {
+            arrayTicTacToe[0][2] = "X";
+            document.getElementById("r1-c3").innerHTML = "X";
+            console.log(arrayTicTacToe);
+            Winner();
+            player1.turn++;
+            myTurn = false;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
+        } else if ((player1.turn >= 3) && (arrayTicTacToe[0][2] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
+            document.getElementById("r1-c3").innerHTML = "";
+            arrayTicTacToe[0][2] = "";
+            console.log(arrayTicTacToe);
+            Winner();
+            player1.turn--;
+        }
+
+    } else {                   //LE TOCARIA AL JUGADOR 2
+        //Si aun no ha realizado 3 turnos y la casilla esta vacia:
+        if ((player2.turn < 3) && (arrayTicTacToe[0][2] == "")) {
+            arrayTicTacToe[0][2] = "O"
+            document.getElementById("r1-c3").innerHTML = "O";
+            console.log(arrayTicTacToe);
+            Winner();
+            player2.turn++
+            myTurn = true;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
+        } else if ((player2.turn >= 3) && (arrayTicTacToe[0][2] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
+            document.getElementById("r1-c3").innerHTML = "";
+            arrayTicTacToe[0][2] = "";
+            console.log(arrayTicTacToe);
+            Winner();
+            player2.turn--;
+        }
+    }
 }
 
 // Funcion llamada al pulsar row2-col1
 CenterLeftPush = () => {
-    if( myTurn == true){   // LE TOCARIA AL JUGADOR 1
+    if (myTurn == true) {   // LE TOCARIA AL JUGADOR 1
 
         //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-   if((player1.turn < 3) && ( arrayTicTacToe[1][0] == "")){
-    arrayTicTacToe[1][0] = "X";
-    document.getElementById("r2-c1").innerHTML = "X";
-    player1.turn ++; 
-    myTurn = false;
-    document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
-   } else if ((player1.turn >= 3) && ( arrayTicTacToe[1][0] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
-    document.getElementById("r2-c1").innerHTML = "";
-    arrayTicTacToe[1][0] = "";
-   }
-   
-} else {                   //LE TOCARIA AL JUGADOR 2
-    //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-    if((player2.turn < 3) && ( arrayTicTacToe[1][0] == "")){
-        arrayTicTacToe[1][0] = "O"
-        document.getElementById("r2-c1").innerHTML = "O";
-        player2.turn ++
-        myTurn = true;
-        document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
-      } else if ((player2.turn >= 3) && ( arrayTicTacToe[1][0] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
-        document.getElementById("r2-c1").innerHTML = "";
-        arrayTicTacToe[1][0] = "";
-       }
-}
+        if ((player1.turn < 3) && (arrayTicTacToe[1][0] == "")) {
+            arrayTicTacToe[1][0] = "X";
+            document.getElementById("r2-c1").innerHTML = "X";
+            Winner();
+            player1.turn++;
+            myTurn = false;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
+        } else if ((player1.turn >= 3) && (arrayTicTacToe[1][0] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
+            document.getElementById("r2-c1").innerHTML = "";
+            arrayTicTacToe[1][0] = "";
+            Winner();
+            player1.turn--;
+        }
+
+    } else {                   //LE TOCARIA AL JUGADOR 2
+        //Si aun no ha realizado 3 turnos y la casilla esta vacia:
+        if ((player2.turn < 3) && (arrayTicTacToe[1][0] == "")) {
+            arrayTicTacToe[1][0] = "O"
+            document.getElementById("r2-c1").innerHTML = "O";
+            Winner();
+            player2.turn++
+            myTurn = true;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
+        } else if ((player2.turn >= 3) && (arrayTicTacToe[1][0] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
+            document.getElementById("r2-c1").innerHTML = "";
+            arrayTicTacToe[1][0] = "";
+            Winner();
+            player2.turn--;
+        }
+    }
 }
 
 
 // Funcion llamada al pulsar row2-col2
 CenterCenterPush = () => {
-    if( myTurn == true){   // LE TOCARIA AL JUGADOR 1
+    if (myTurn == true) {   // LE TOCARIA AL JUGADOR 1
 
         //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-   if((player1.turn < 3) && ( arrayTicTacToe[1][1] == "")){
-    arrayTicTacToe[1][1] = "X";
-    document.getElementById("r2-c2").innerHTML = "X";
-    player1.turn ++; 
-    myTurn = false;
-    document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
-   } else if ((player1.turn >= 3) && ( arrayTicTacToe[1][1] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
-    document.getElementById("r2-c2").innerHTML = "";
-    arrayTicTacToe[1][1] = "";
-   }
-   
-} else {                   //LE TOCARIA AL JUGADOR 2
-    //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-    if((player2.turn < 3) && ( arrayTicTacToe[1][1] == "")){
-        arrayTicTacToe[1][1] = "O"
-        document.getElementById("r2-c2").innerHTML = "O";
-        player2.turn ++
-        myTurn = true;
-        document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
-      } else if ((player2.turn >= 3) && ( arrayTicTacToe[1][1] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
-        document.getElementById("r2-c2").innerHTML = "";
-        arrayTicTacToe[1][1] = "";
-       }
-}
+        if ((player1.turn < 3) && (arrayTicTacToe[1][1] == "")) {
+            arrayTicTacToe[1][1] = "X";
+            document.getElementById("r2-c2").innerHTML = "X";
+            Winner();
+            player1.turn++;
+            myTurn = false;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
+        } else if ((player1.turn >= 3) && (arrayTicTacToe[1][1] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
+            document.getElementById("r2-c2").innerHTML = "";
+            arrayTicTacToe[1][1] = "";
+            Winner();
+            player1.turn--;
+        }
+
+    } else {                   //LE TOCARIA AL JUGADOR 2
+        //Si aun no ha realizado 3 turnos y la casilla esta vacia:
+        if ((player2.turn < 3) && (arrayTicTacToe[1][1] == "")) {
+            arrayTicTacToe[1][1] = "O"
+            document.getElementById("r2-c2").innerHTML = "O";
+            Winner();
+            player2.turn++
+            myTurn = true;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
+        } else if ((player2.turn >= 3) && (arrayTicTacToe[1][1] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
+            document.getElementById("r2-c2").innerHTML = "";
+            arrayTicTacToe[1][1] = "";
+            Winner();
+            player2.turn--;
+        }
+    }
 }
 
 
 // Funcion llamada al pulsar row2-col3
 CenterRightPush = () => {
-    if( myTurn == true){   // LE TOCARIA AL JUGADOR 1
+    if (myTurn == true) {   // LE TOCARIA AL JUGADOR 1
 
         //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-   if((player1.turn < 3) && ( arrayTicTacToe[1][2] == "")){
-    arrayTicTacToe[1][2] = "X";
-    document.getElementById("r2-c3").innerHTML = "X";
-    player1.turn ++; 
-    myTurn = false;
-    document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
-   } else if ((player1.turn >= 3) && ( arrayTicTacToe[1][2] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
-    document.getElementById("r2-c3").innerHTML = "";
-    arrayTicTacToe[1][2] = "";
-   }
-   
-} else {                   //LE TOCARIA AL JUGADOR 2
-    //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-    if((player2.turn < 3) && ( arrayTicTacToe[1][2] == "")){
-        arrayTicTacToe[1][2] = "O"
-        document.getElementById("r2-c3").innerHTML = "O";
-        player2.turn ++
-        myTurn = true;
-        document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
-      } else if ((player2.turn >= 3) && ( arrayTicTacToe[1][2] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
-        document.getElementById("r2-c3").innerHTML = "";
-        arrayTicTacToe[1][2] = "";
-       }
-}
+        if ((player1.turn < 3) && (arrayTicTacToe[1][2] == "")) {
+            arrayTicTacToe[1][2] = "X";
+            document.getElementById("r2-c3").innerHTML = "X";
+            Winner();
+            player1.turn++;
+            myTurn = false;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
+        } else if ((player1.turn >= 3) && (arrayTicTacToe[1][2] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
+            document.getElementById("r2-c3").innerHTML = "";
+            arrayTicTacToe[1][2] = "";
+            Winner();
+            player1.turn--;
+        }
+
+    } else {                   //LE TOCARIA AL JUGADOR 2
+        //Si aun no ha realizado 3 turnos y la casilla esta vacia:
+        if ((player2.turn < 3) && (arrayTicTacToe[1][2] == "")) {
+            arrayTicTacToe[1][2] = "O"
+            document.getElementById("r2-c3").innerHTML = "O";
+            Winner();
+            player2.turn++
+            myTurn = true;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
+        } else if ((player2.turn >= 3) && (arrayTicTacToe[1][2] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
+            document.getElementById("r2-c3").innerHTML = "";
+            arrayTicTacToe[1][2] = "";
+            Winner();
+            player2.turn--;
+        }
+    }
 }
 
 
 // Funcion llamada al pulsar row3-col1
-BottomLeftPush= () => {
-    if( myTurn == true){   // LE TOCARIA AL JUGADOR 1
+BottomLeftPush = () => {
+    if (myTurn == true) {   // LE TOCARIA AL JUGADOR 1
 
         //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-   if((player1.turn < 3) && ( arrayTicTacToe[2][0] == "")){
-    arrayTicTacToe[2][0] = "X";
-    document.getElementById("r3-c1").innerHTML = "X";
-    player1.turn ++; 
-    myTurn = false;
-    document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
-   } else if ((player1.turn >= 3) && ( arrayTicTacToe[2][0] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
-    document.getElementById("r3-c1").innerHTML = "";
-    arrayTicTacToe[2][0] = "";
-   }
-   
-} else {                   //LE TOCARIA AL JUGADOR 2
-    //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-    if((player2.turn < 3) && ( arrayTicTacToe[2][0] == "")){
-        arrayTicTacToe[2][0] = "O"
-        document.getElementById("r3-c1").innerHTML = "O";
-        player2.turn ++
-        myTurn = true;
-        document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
-      } else if ((player2.turn >= 3) && ( arrayTicTacToe[2][0] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
-        document.getElementById("r3-c1").innerHTML = "";
-        arrayTicTacToe[2][0] = "";
-       }
-}
+        if ((player1.turn < 3) && (arrayTicTacToe[2][0] == "")) {
+            arrayTicTacToe[2][0] = "X";
+            document.getElementById("r3-c1").innerHTML = "X";
+            Winner();
+            player1.turn++;
+            myTurn = false;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
+        } else if ((player1.turn >= 3) && (arrayTicTacToe[2][0] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
+            document.getElementById("r3-c1").innerHTML = "";
+            arrayTicTacToe[2][0] = "";
+            Winner();
+            player1.turn--;
+        }
+
+    } else {                   //LE TOCARIA AL JUGADOR 2
+        //Si aun no ha realizado 3 turnos y la casilla esta vacia:
+        if ((player2.turn < 3) && (arrayTicTacToe[2][0] == "")) {
+            arrayTicTacToe[2][0] = "O"
+            document.getElementById("r3-c1").innerHTML = "O";
+            Winner();
+            player2.turn++
+            myTurn = true;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
+        } else if ((player2.turn >= 3) && (arrayTicTacToe[2][0] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
+            document.getElementById("r3-c1").innerHTML = "";
+            arrayTicTacToe[2][0] = "";
+            Winner();
+            player2.turn--;
+        }
+    }
 }
 
 
 // Funcion llamada al pulsar row3-col2
-BottomCenterPush= () => {
-    if( myTurn == true){   // LE TOCARIA AL JUGADOR 1
+BottomCenterPush = () => {
+    if (myTurn == true) {   // LE TOCARIA AL JUGADOR 1
 
         //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-   if((player1.turn < 3) && ( arrayTicTacToe[2][1] == "")){
-    arrayTicTacToe[2][1] = "X";
-    document.getElementById("r3-c2").innerHTML = "X";
-    player1.turn ++; 
-    myTurn = false;
-    document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
-   } else if ((player1.turn >= 3) && ( arrayTicTacToe[2][1] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
-    document.getElementById("r3-c2").innerHTML = "";
-    arrayTicTacToe[2][1] = "";
-   }
-   
-} else {                   //LE TOCARIA AL JUGADOR 2
-    //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-    if((player2.turn < 3) && ( arrayTicTacToe[2][1] == "")){
-        arrayTicTacToe[2][1] = "O"
-        document.getElementById("r3-c2").innerHTML = "O";
-        player2.turn ++
-        myTurn = true;
-        document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
-      } else if ((player2.turn >= 3) && ( arrayTicTacToe[2][1] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
-        document.getElementById("r3-c2").innerHTML = "";
-        arrayTicTacToe[2][1] = "";
-       }
-}
+        if ((player1.turn < 3) && (arrayTicTacToe[2][1] == "")) {
+            arrayTicTacToe[2][1] = "X";
+            document.getElementById("r3-c2").innerHTML = "X";
+            Winner();
+            player1.turn++;
+            myTurn = false;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
+        } else if ((player1.turn >= 3) && (arrayTicTacToe[2][1] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
+            document.getElementById("r3-c2").innerHTML = "";
+            arrayTicTacToe[2][1] = "";
+            Winner();
+            player1.turn--;
+        }
+
+    } else {                   //LE TOCARIA AL JUGADOR 2
+        //Si aun no ha realizado 3 turnos y la casilla esta vacia:
+        if ((player2.turn < 3) && (arrayTicTacToe[2][1] == "")) {
+            arrayTicTacToe[2][1] = "O"
+            document.getElementById("r3-c2").innerHTML = "O";
+            Winner();
+            player2.turn++
+            myTurn = true;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
+        } else if ((player2.turn >= 3) && (arrayTicTacToe[2][1] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
+            document.getElementById("r3-c2").innerHTML = "";
+            arrayTicTacToe[2][1] = "";
+            Winner();
+            player2.turn--;
+        }
+    }
 }
 
 
 // Funcion llamada al pulsar row3-col1
-BottomRightPush= () => {
-    if( myTurn == true){   // LE TOCARIA AL JUGADOR 1
+BottomRightPush = () => {
+    if (myTurn == true) {   // LE TOCARIA AL JUGADOR 1
 
         //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-   if((player1.turn < 3) && ( arrayTicTacToe[2][2] == "")){
-    arrayTicTacToe[2][2] = "X";
-    document.getElementById("r3-c3").innerHTML = "X";
-    player1.turn ++; 
-    myTurn = false;
-    document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
-   } else if ((player1.turn >= 3) && ( arrayTicTacToe[2][2] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
-    document.getElementById("r3-c3").innerHTML = "";
-    arrayTicTacToe[2][2] = "";
-   }
-   
-} else {                   //LE TOCARIA AL JUGADOR 2
-    //Si aun no ha realizado 3 turnos y la casilla esta vacia:
-    if((player2.turn < 3) && ( arrayTicTacToe[2][2] == "")){
-        arrayTicTacToe[2][2] = "O"
-        document.getElementById("r3-c3").innerHTML = "O";
-        player2.turn ++
-        myTurn = true;
-        document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
-      } else if ((player2.turn >= 3) && ( arrayTicTacToe[2][2] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
-        document.getElementById("r3-c3").innerHTML = "";
-        arrayTicTacToe[2][2] = "";
-       }
+        if ((player1.turn < 3) && (arrayTicTacToe[2][2] == "")) {
+            arrayTicTacToe[2][2] = "X";
+            document.getElementById("r3-c3").innerHTML = "X";
+            Winner();
+            player1.turn++;
+            myTurn = false;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
+        } else if ((player1.turn >= 3) && (arrayTicTacToe[2][2] == "X")) { //Si ya ha gastado todas las fichas y la casilla tiene una "X":
+            document.getElementById("r3-c3").innerHTML = "";
+            arrayTicTacToe[2][2] = "";
+            Winner();
+            player1.turn--;
+        }
+
+    } else {                   //LE TOCARIA AL JUGADOR 2
+        //Si aun no ha realizado 3 turnos y la casilla esta vacia:
+        if ((player2.turn < 3) && (arrayTicTacToe[2][2] == "")) {
+            arrayTicTacToe[2][2] = "O"
+            document.getElementById("r3-c3").innerHTML = "O";
+            Winner();
+            player2.turn++
+            myTurn = true;
+            document.getElementById("turnOf").innerHTML = `Turn of  ${player1.name}`;
+        } else if ((player2.turn >= 3) && (arrayTicTacToe[2][2] == "O")) { //Si ya ha gastado todas las fichas y la casilla tiene una "O":
+            document.getElementById("r3-c3").innerHTML = "";
+            arrayTicTacToe[2][2] = "";
+            Winner();
+            player2.turn--;
+        }
+    }
 }
-}
+
+
+// // Funcion comprobar si hay un winner:
+//  const Winner = () => {
+//     switch (arrayTicTacToe) {
+//         case ((arrayTicTacToe[0][0] == "X") && (arrayTicTacToe[0][1] == "X") && (arrayTicTacToe[0][2] == "X")):
+//             console.log("HAS GANADO JUGADOR 1. COMBINACION: FILA 1");
+//             break;
+//         case ((arrayTicTacToe[1][0] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[1][2] == "X")):
+//             console.log("HAS GANADO JUGADOR 1 . COMBINACION: FILA 2");
+//             break;
+//         case ((arrayTicTacToe[2][0] == "X") && (arrayTicTacToe[2][1] == "X") && (arrayTicTacToe[2][2] == "X")):
+//             console.log("HAS GANADO JUGADOR 1. COMBINACION: FILA 3");
+//             break;
+//         case ((arrayTicTacToe[0][0] == "X") && (arrayTicTacToe[1][0] == "X") && (arrayTicTacToe[2][0] == "X")):
+//             console.log("HAS GANADO JUGADOR 1. COMBINACION: COLUMNA 1");
+//             break;
+//         case ((arrayTicTacToe[0][1] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[2][1] == "X")):
+//             console.log("HAS GANADO JUGADOR 1. COMBINACION: COLUMNA 2");
+//             break;
+//         case ((arrayTicTacToe[0][2] == "X") && (arrayTicTacToe[1][2] == "X") && (arrayTicTacToe[2][2] == "X")):
+//             console.log("HAS GANADO JUGADOR 1. COMBINACION: COLUMNA 3");
+//             break;
+//         case ((arrayTicTacToe[0][0] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[2][2] == "X")):
+//             console.log("HAS GANADO JUGADOR 1. COMBINACION: DIAGONAL 1");
+//             break;
+//         case ((arrayTicTacToe[2][0] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[0][2] == "X")):
+//             console.log("HAS GANADO JUGADOR 1. COMBINACION: DIAGONAL 2");
+//             break;
+//         case ((arrayTicTacToe[0][0] == "O") && (arrayTicTacToe[0][1] == "O") && (arrayTicTacToe[0][2] == "O")):
+//             console.log("HAS GANADO JUGADOR 2. COMBINACION: FILA 1");
+//             break;
+//         case ((arrayTicTacToe[1][0] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[1][2] == "O")):
+//             console.log("HAS GANADO JUGADOR 2 . COMBINACION: FILA 2");
+//             break;
+//         case ((arrayTicTacToe[2][0] == "O") && (arrayTicTacToe[2][1] == "O") && (arrayTicTacToe[2][2] == "O")):
+//             console.log("HAS GANADO JUGADOR 2. COMBINACION: FILA 3");
+//             break;
+
+//         case ((arrayTicTacToe[0][0] == "O") && (arrayTicTacToe[1][0] == "O") && (arrayTicTacToe[2][0] == "O")):
+//             console.log("HAS GANADO JUGADOR 2. COMBINACION: COLUMNA 1");
+//             break;
+//         case ((arrayTicTacToe[0][1] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[2][1] == "O")):
+//             console.log("HAS GANADO JUGADOR 2. COMBINACION: COLUMNA 2");
+//             break;
+//         case ((arrayTicTacToe[0][2] == "O") && (arrayTicTacToe[1][2] == "O") && (arrayTicTacToe[2][2] == "O")):
+//             console.log("HAS GANADO JUGADOR 2. COMBINACION: COLUMNA 3");
+//             break;
+//         case ((arrayTicTacToe[0][0] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[2][2] == "O")):
+//             console.log("HAS GANADO JUGADOR 2. COMBINACION: DIAGONAL 1");
+//             break;
+//         case ((arrayTicTacToe[2][0] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[0][2] == "O")):
+//             console.log("HAS GANADO JUGADOR 2. COMBINACION: DIAGONAL 2");
+//             break;
+//         default:
+//             break;
+
+//     }
+// }
+
+
+// Nuevo Array Total con todos los elementos.
+// let newArrayTotal = arrayTicTacToe[0].concat(arrayTicTacToe[1], arrayTicTacToe[2]);
+// console.log(newArrayTotal);
+
+
 
 
 
