@@ -1,74 +1,53 @@
 // Funcion al darle click al boton de enviar (Datos PLAYER 1)
 FunctionSaveNameOne = () => {
-
     // Guardo el valor de checked del boton radio Human del player 1
     let radioHumanOneValue = document.getElementById("radioHuman1").checked;
-
     // Guardo el valor de checked del boton radio CPU del player 1
     let radioCpuOneValue = document.getElementById("radioCpu1").checked;
-
     // Guardo el valor del input player 1
     let buttonOne = document.getElementById("inputPlayerOne");
     let saveName = buttonOne.value;
-
     // Guardo el parrafo de arriba del input para posteriormente introducirle el nombre del Player 1.
     let namePlayerOne = document.getElementById("namePlayerOne");
     // Validacion de que todos los campos(input y radio(Human/CPU) esten rellenos)
-    if ((radioHumanOneValue == true || radioCpuOneValue == true) && (saveName != "")) {
+    if ((radioHumanOneValue == true) && (saveName != "")) {
         // Guardo el valor del input 1 en localstorage
         localStorage.setItem("nameOfPlayerOne", saveName);
-
-
         // Guardo el valor del boton radioHuman1 en localstorage
         localStorage.setItem("valueOfHuman1", radioHumanOneValue);
-
-
         // Guardo el valor del boton radioCpu1 en localstorage
         localStorage.setItem("valueOfCpu1", radioCpuOneValue);
-
-
         // Introduzco en el parrafo el nombre del Player 1
         namePlayerOne.innerHTML = ` Player 1 : ${saveName}`;
-
-
         //Vacio el input player 1
         buttonOne.value = "";
     } else {
-        alert("Please, write your name and select if you are Human o CPU")
+        alert("Please, write your name and select Human . This is not possible select CPU in player 1.")
     }
 }
 
 // Funcion al darle click al boton de enviar (Datos PLAYER 2)
 FunctionSaveNameTwo = () => {
-
     // Guardo el valor de checked del boton radio Human del player 2
     let radioHumanTwoValue = document.getElementById("radioHuman2").checked;
-
     // Guardo el valor de checked del boton radio CPU del player 2
     let radioCpuTwoValue = document.getElementById("radioCpu2").checked;
-
     // Guardo el valor del input player 2
     let buttonTwo = document.getElementById("inputPlayerTwo");
     let saveNameTwo = buttonTwo.value;
-
     // Guardo el parrafo de arriba del input para posteriormente introducirle el nombre del Player 2.
     let namePlayerTwo = document.getElementById("namePlayerTwo");
+
     // Validacion de que todos los campos(input y radio(Human/CPU) esten rellenos)
     if ((radioHumanTwoValue == true || radioCpuTwoValue == true) && (saveNameTwo != "")) {
         // Guardo el valor del input 2 en localstorage
         localStorage.setItem("nameOfPlayerTwo", saveNameTwo);
-
         // Guardo el valor del boton radioHuman2 en localstorage
         localStorage.setItem("valueOfHuman2", radioHumanTwoValue);
-
         // Guardo el valor del boton radioCpu2 en localstorage
         localStorage.setItem("valueOfCpu2", radioCpuTwoValue);
-
-
         // Introduzco en el parrafo el nombre del Player 2
         namePlayerTwo.innerHTML = ` Player 2 : ${saveNameTwo}`;
-
-
         //Vacio el input player 2
         buttonTwo.value = "";
     } else {
@@ -76,7 +55,7 @@ FunctionSaveNameTwo = () => {
     }
 }
 
-// Funcion para cambiar a play.html(HTML donde esta el propio juego) con el boton Start
+// Funcion para cambiar a play.html(HTML donde esta el propio juego) desde players.html con el boton Start
 ChangeWindow = () => {
     if ((document.getElementById("namePlayerOne").innerHTML != "Player 1") && (document.getElementById("namePlayerTwo").innerHTML != "Player 2")) {
         document.getElementById("startButton").href = "./play.html";
@@ -89,20 +68,19 @@ ChangeWindow = () => {
 
 //Recupero el nameOfPlayerOne del localStorage
 let name1 = localStorage.getItem("nameOfPlayerOne");
-
 // Recupero el nameOfPlayerTwo del localStorage
 let name2 = localStorage.getItem("nameOfPlayerTwo");
-
 // Recupero el tipo de jugador 1 (Human o CPU) y lo escribo en el Panel de Informacion
 let typePlayer1 = localStorage.getItem("valueOfHuman1");
 
 if (typePlayer1 == "true") {
     var nameType1 = "HUMAN"; // Usamos var para que el foco sea general; asi ya estara definida fuera del if.
     document.getElementById("nameP1").innerHTML = `Player 1:  ${name1} - ${nameType1} - X`;
-} else {
-    var nameType1 = "CPU";
-    document.getElementById("nameP1").innerHTML = `Player 1:  ${name1} - ${nameType1} - X`;
 }
+//      else {
+//     var nameType1 = "CPU";
+//     document.getElementById("nameP1").innerHTML = `Player 1:  ${name1} - ${nameType1} - X`;
+// }
 
 // Recupero el tipo de jugador 2 (Human o CPU) y lo escribo en el Panel de Informacion
 let typePlayer2 = localStorage.getItem("valueOfHuman2");
@@ -115,13 +93,9 @@ if (typePlayer2 == "true") {
     document.getElementById("nameP2").innerHTML = `Player 2:  ${name2} - ${nameType2} - O`;
 };
 
-
-
-
 // CREAMOS ARRAY QUE CONTIENE LA TABLA DEL JUEGO y los 3 distintos SUBARRAYS POR CADA FILA DEL TABLERO
-
-let arrayTicTacToe = new Array(3);
-//En cada posición de nuevoArray guardamos un nuevo array
+var arrayTicTacToe = new Array(3);
+//En cada posición de arrayTicTacToe guardamos un nuevo array
 arrayTicTacToe[0] = new Array(3);
 arrayTicTacToe[1] = new Array(3);
 arrayTicTacToe[2] = new Array(3);
@@ -136,24 +110,9 @@ arrayTicTacToe[2][0] = "";
 arrayTicTacToe[2][1] = "";
 arrayTicTacToe[2][2] = "";
 
-// // Igualamos cada posicion del array a una variable nueva
-// var pos00 = arrayTicTacToe[0][0];
-// var pos01 = arrayTicTacToe[0][1];
-// var pos02 = arrayTicTacToe[0][2];
-// var pos10 = arrayTicTacToe[1][0];
-// var pos11 = arrayTicTacToe[1][1];
-// var pos12 = arrayTicTacToe[1][2];
-// var pos20 = arrayTicTacToe[2][0];
-// var pos21 = arrayTicTacToe[2][1];
-// var pos22 = arrayTicTacToe[2][2];
-
-// console.log(pos22);
-
-
 
 
 // OBETOS JUGADOR 1- JUGADOR 2
-
 // Creamos  CLASE Player
 class Player {
     constructor(name, turn, type, symbol) {
@@ -162,28 +121,10 @@ class Player {
         this.type = type;
         this.symbol = symbol;
     };
-
-    // Metodos
-    // printX(turn) {
-    //     if (turn < 3) {
-    //         player1.turn ++ 
-    //         FunctionPrintX();
-    //     } else {
-    //         FunctionChangeX();
-    //     }
-    // };
 }
-
 //INSTANCIAMOS 2 Jugadores
-
-
-
 let player1 = new Player(name1, 0, nameType1, "X");
 let player2 = new Player(name2, 0, nameType2, "Y");
-
-
-
-
 
 // Declaro el turno del jugador que comienza el juego. 
 
@@ -198,65 +139,87 @@ if (turnoAleatorio % 2 == 0) {
     document.getElementById("turnOf").innerHTML = `Turn of  ${player2.name}`;
 }
 
-// Funcion comprobar si hay un winner:
+// let prueba = document.getElementsByClassName("youAreTheWinner");
+// let valorPueba = prueba.value;
+// console.log(valorPueba);
+
+
+
 const Winner = () => {
 
-    switch (arrayTicTacToe) {
-        case ((arrayTicTacToe[0][0] == "X") && (arrayTicTacToe[0][1] == "X") && (arrayTicTacToe[0][2] == "X")):
-            console.log("HAS GANADO JUGADOR 1. COMBINACION: FILA 1");
-            break;
-        case ((arrayTicTacToe[1][0] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[1][2] == "X")):
-            console.log("HAS GANADO JUGADOR 1 . COMBINACION: FILA 2");
-            break;
-        case ((arrayTicTacToe[2][0] == "X") && (arrayTicTacToe[2][1] == "X") && (arrayTicTacToe[2][2] == "X")):
-            console.log("HAS GANADO JUGADOR 1. COMBINACION: FILA 3");
-            break;
-        case ((arrayTicTacToe[0][0] == "X") && (arrayTicTacToe[1][0] == "X") && (arrayTicTacToe[2][0] == "X")):
-            console.log("HAS GANADO JUGADOR 1. COMBINACION: COLUMNA 1");
-            break;
-        case ((arrayTicTacToe[0][1] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[2][1] == "X")):
-            console.log("HAS GANADO JUGADOR 1. COMBINACION: COLUMNA 2");
-            break;
-        case ((arrayTicTacToe[0][2] == "X") && (arrayTicTacToe[1][2] == "X") && (arrayTicTacToe[2][2] == "X")):
-            console.log("HAS GANADO JUGADOR 1. COMBINACION: COLUMNA 3");
-            break;
-        case ((arrayTicTacToe[0][0] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[2][2] == "X")):
-            console.log("HAS GANADO JUGADOR 1. COMBINACION: DIAGONAL 1");
-            break;
-        case ((arrayTicTacToe[2][0] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[0][2] == "X")):
-            console.log("HAS GANADO JUGADOR 1. COMBINACION: DIAGONAL 2");
-            break;
-        case ((arrayTicTacToe[0][0] == "O") && (arrayTicTacToe[0][1] == "O") && (arrayTicTacToe[0][2] == "O")):
-            console.log("HAS GANADO JUGADOR 2. COMBINACION: FILA 1");
-            break;
-        case ((arrayTicTacToe[1][0] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[1][2] == "O")):
-            console.log("HAS GANADO JUGADOR 2 . COMBINACION: FILA 2");
-            break;
-        case ((arrayTicTacToe[2][0] == "O") && (arrayTicTacToe[2][1] == "O") && (arrayTicTacToe[2][2] == "O")):
-            console.log("HAS GANADO JUGADOR 2. COMBINACION: FILA 3");
-            break;
+    if (arrayTicTacToe[0][0] == 'X' && arrayTicTacToe[0][1] == 'X' && arrayTicTacToe[0][2] == 'X' || arrayTicTacToe[1][0] == 'X' && arrayTicTacToe[1][1] == 'X' && arrayTicTacToe[1][2] == 'X' ||
+        arrayTicTacToe[2][0] == 'X' && arrayTicTacToe[2][1] == 'X' && arrayTicTacToe[2][2] == 'X' || arrayTicTacToe[0][0] == 'X' && arrayTicTacToe[1][0] == 'X' && arrayTicTacToe[2][0] == 'X' ||
+        arrayTicTacToe[0][1] == 'X' && arrayTicTacToe[1][1] == 'X' && arrayTicTacToe[2][1] == 'X' || arrayTicTacToe[0][2] == 'X' && arrayTicTacToe[1][2] == 'X' && arrayTicTacToe[2][2] == 'X' ||
+        arrayTicTacToe[0][0] == 'X' && arrayTicTacToe[1][1] == 'X' && arrayTicTacToe[2][2] == 'X' || arrayTicTacToe[0][2] == 'X' && arrayTicTacToe[1][1] == 'X' && arrayTicTacToe[2][0] == 'X') {
+        setTimeout(function () { location.href = "winner.html"; }, 500);
+    }
 
-        case ((arrayTicTacToe[0][0] == "O") && (arrayTicTacToe[1][0] == "O") && (arrayTicTacToe[2][0] == "O")):
-            console.log("HAS GANADO JUGADOR 2. COMBINACION: COLUMNA 1");
-            break;
-        case ((arrayTicTacToe[0][1] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[2][1] == "O")):
-            console.log("HAS GANADO JUGADOR 2. COMBINACION: COLUMNA 2");
-            break;
-        case ((arrayTicTacToe[0][2] == "O") && (arrayTicTacToe[1][2] == "O") && (arrayTicTacToe[2][2] == "O")):
-            console.log("HAS GANADO JUGADOR 2. COMBINACION: COLUMNA 3");
-            break;
-        case ((arrayTicTacToe[0][0] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[2][2] == "O")):
-            console.log("HAS GANADO JUGADOR 2. COMBINACION: DIAGONAL 1");
-            break;
-        case ((arrayTicTacToe[2][0] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[0][2] == "O")):
-            console.log("HAS GANADO JUGADOR 2. COMBINACION: DIAGONAL 2");
-            break;
-        default:
-            console.log("NO FUNCIONA");
-            break;
-
+    if (arrayTicTacToe[0][0] == 'O' && arrayTicTacToe[0][1] == 'O' && arrayTicTacToe[0][2] == 'O' || arrayTicTacToe[1][0] == 'O' && arrayTicTacToe[1][1] == 'O' && arrayTicTacToe[1][2] == 'O' ||
+        arrayTicTacToe[2][0] == 'O' && arrayTicTacToe[2][1] == 'O' && arrayTicTacToe[2][2] == 'O' || arrayTicTacToe[0][0] == 'O' && arrayTicTacToe[1][0] == 'O' && arrayTicTacToe[2][0] == 'O' ||
+        arrayTicTacToe[0][1] == 'O' && arrayTicTacToe[1][1] == 'O' && arrayTicTacToe[2][1] == 'O' || arrayTicTacToe[0][2] == 'O' && arrayTicTacToe[1][2] == 'O' && arrayTicTacToe[2][2] == 'O' ||
+        arrayTicTacToe[0][0] == 'O' && arrayTicTacToe[1][1] == 'O' && arrayTicTacToe[2][2] == 'O' || arrayTicTacToe[0][2] == 'O' && arrayTicTacToe[1][1] == 'O' && arrayTicTacToe[2][0] == 'O') {
+        setTimeout(function () { location.href = "winner.html"; }, 500);
     }
 }
+// Funcion comprobar si hay un winner:
+// const Winner = () => {
+
+//     switch (arrayTicTacToe) {
+//         case ((arrayTicTacToe[0][0] == "X") && (arrayTicTacToe[0][1] == "X") && (arrayTicTacToe[0][2] == "X")):
+//             console.log("HAS GANADO JUGADOR 1. COMBINACION: FILA 1");
+//             break;
+//         case ((arrayTicTacToe[1][0] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[1][2] == "X")):
+//             console.log("HAS GANADO JUGADOR 1 . COMBINACION: FILA 2");
+//             break;
+//         case ((arrayTicTacToe[2][0] == "X") && (arrayTicTacToe[2][1] == "X") && (arrayTicTacToe[2][2] == "X")):
+//             console.log("HAS GANADO JUGADOR 1. COMBINACION: FILA 3");
+//             break;
+//         case ((arrayTicTacToe[0][0] == "X") && (arrayTicTacToe[1][0] == "X") && (arrayTicTacToe[2][0] == "X")):
+//             console.log("HAS GANADO JUGADOR 1. COMBINACION: COLUMNA 1");
+//             break;
+//         case ((arrayTicTacToe[0][1] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[2][1] == "X")):
+//             console.log("HAS GANADO JUGADOR 1. COMBINACION: COLUMNA 2");
+//             break;
+//         case ((arrayTicTacToe[0][2] == "X") && (arrayTicTacToe[1][2] == "X") && (arrayTicTacToe[2][2] == "X")):
+//             console.log("HAS GANADO JUGADOR 1. COMBINACION: COLUMNA 3");
+//             break;
+//         case ((arrayTicTacToe[0][0] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[2][2] == "X")):
+//             console.log("HAS GANADO JUGADOR 1. COMBINACION: DIAGONAL 1");
+//             break;
+//         case ((arrayTicTacToe[2][0] == "X") && (arrayTicTacToe[1][1] == "X") && (arrayTicTacToe[0][2] == "X")):
+//             console.log("HAS GANADO JUGADOR 1. COMBINACION: DIAGONAL 2");
+//             break;
+//         case ((arrayTicTacToe[0][0] == "O") && (arrayTicTacToe[0][1] == "O") && (arrayTicTacToe[0][2] == "O")):
+//             console.log("HAS GANADO JUGADOR 2. COMBINACION: FILA 1");
+//             break;
+//         case ((arrayTicTacToe[1][0] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[1][2] == "O")):
+//             console.log("HAS GANADO JUGADOR 2 . COMBINACION: FILA 2");
+//             break;
+//         case ((arrayTicTacToe[2][0] == "O") && (arrayTicTacToe[2][1] == "O") && (arrayTicTacToe[2][2] == "O")):
+//             console.log("HAS GANADO JUGADOR 2. COMBINACION: FILA 3");
+//             break;
+
+//         case ((arrayTicTacToe[0][0] == "O") && (arrayTicTacToe[1][0] == "O") && (arrayTicTacToe[2][0] == "O")):
+//             console.log("HAS GANADO JUGADOR 2. COMBINACION: COLUMNA 1");
+//             break;
+//         case ((arrayTicTacToe[0][1] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[2][1] == "O")):
+//             console.log("HAS GANADO JUGADOR 2. COMBINACION: COLUMNA 2");
+//             break;
+//         case ((arrayTicTacToe[0][2] == "O") && (arrayTicTacToe[1][2] == "O") && (arrayTicTacToe[2][2] == "O")):
+//             console.log("HAS GANADO JUGADOR 2. COMBINACION: COLUMNA 3");
+//             break;
+//         case ((arrayTicTacToe[0][0] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[2][2] == "O")):
+//             console.log("HAS GANADO JUGADOR 2. COMBINACION: DIAGONAL 1");
+//             break;
+//         case ((arrayTicTacToe[2][0] == "O") && (arrayTicTacToe[1][1] == "O") && (arrayTicTacToe[0][2] == "O")):
+//             console.log("HAS GANADO JUGADOR 2. COMBINACION: DIAGONAL 2");
+//             break;
+//         default:
+//             console.log("DEFAULT DEL SWITCH");
+//             break;
+
+//     }
+// }
 
 
 //Funcion comprobar fila
@@ -269,6 +232,7 @@ const Winner = () => {
 //         }
 //     }
 // }
+
 
 
 
@@ -477,7 +441,6 @@ CenterCenterPush = () => {
     }
 }
 
-
 // Funcion llamada al pulsar row2-col3
 CenterRightPush = () => {
     if (myTurn == true) {   // LE TOCARIA AL JUGADOR 1
@@ -514,7 +477,6 @@ CenterRightPush = () => {
         }
     }
 }
-
 
 // Funcion llamada al pulsar row3-col1
 BottomLeftPush = () => {
@@ -553,7 +515,6 @@ BottomLeftPush = () => {
     }
 }
 
-
 // Funcion llamada al pulsar row3-col2
 BottomCenterPush = () => {
     if (myTurn == true) {   // LE TOCARIA AL JUGADOR 1
@@ -590,7 +551,6 @@ BottomCenterPush = () => {
         }
     }
 }
-
 
 // Funcion llamada al pulsar row3-col1
 BottomRightPush = () => {
@@ -630,7 +590,6 @@ BottomRightPush = () => {
 }
 
 
-// // Funcion comprobar si hay un winner:
 //  const Winner = () => {
 //     switch (arrayTicTacToe) {
 //         case ((arrayTicTacToe[0][0] == "X") && (arrayTicTacToe[0][1] == "X") && (arrayTicTacToe[0][2] == "X")):
@@ -692,24 +651,3 @@ BottomRightPush = () => {
 // Nuevo Array Total con todos los elementos.
 // let newArrayTotal = arrayTicTacToe[0].concat(arrayTicTacToe[1], arrayTicTacToe[2]);
 // console.log(newArrayTotal);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
