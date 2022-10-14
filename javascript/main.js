@@ -11,11 +11,11 @@ FunctionSaveNameOne = () => {
     let namePlayerOne = document.getElementById("namePlayerOne");
     // Validacion de que todos los campos(input y radio(Human/CPU) esten rellenos)
     if ((radioHumanOneValue == true) && (saveName != "")) {
-        // Guardo el valor del input 1 en localstorage
+        // Guardo el valor del input 1 en sessionStorage
         sessionStorage.setItem("nameOfPlayerOne", saveName);
-        // Guardo el valor del boton radioHuman1 en localstorage
+        // Guardo el valor del boton radioHuman1 en sessionStorage
         sessionStorage.setItem("valueOfHuman1", radioHumanOneValue);
-        // Guardo el valor del boton radioCpu1 en localstorage
+        // Guardo el valor del boton radioCpu1 en sessionStorage
         sessionStorage.setItem("valueOfCpu1", radioCpuOneValue);
         // Introduzco en el parrafo el nombre del Player 1
         namePlayerOne.innerHTML = ` Player 1 : ${saveName}`;
@@ -40,11 +40,11 @@ FunctionSaveNameTwo = () => {
 
     // Validacion de que todos los campos(input y radio(Human/CPU) esten rellenos)
     if ((radioHumanTwoValue == true || radioCpuTwoValue == true) && (saveNameTwo != "")) {
-        // Guardo el valor del input 2 en localstorage
+        // Guardo el valor del input 2 en sessionStorage
         sessionStorage.setItem("nameOfPlayerTwo", saveNameTwo);
-        // Guardo el valor del boton radioHuman2 en localstorage
+        // Guardo el valor del boton radioHuman2 en sessionStorage
         sessionStorage.setItem("valueOfHuman2", radioHumanTwoValue);
-        // Guardo el valor del boton radioCpu2 en localstorage
+        // Guardo el valor del boton radioCpu2 en sessionStorage
         sessionStorage.setItem("valueOfCpu2", radioCpuTwoValue);
         // Introduzco en el parrafo el nombre del Player 2
         namePlayerTwo.innerHTML = ` Player 2 : ${saveNameTwo}`;
@@ -66,9 +66,9 @@ ChangeWindow = () => {
 
 // INFORMATION PANEL (play.html)
 
-//Recupero el nameOfPlayerOne del localStorage
+//Recupero el nameOfPlayerOne del sessionStorage
 let name1 = sessionStorage.getItem("nameOfPlayerOne");
-// Recupero el nameOfPlayerTwo del localStorage
+// Recupero el nameOfPlayerTwo del sessionStorage
 let name2 = sessionStorage.getItem("nameOfPlayerTwo");
 // Recupero el tipo de jugador 1 (Human o CPU) y lo escribo en el Panel de Informacion
 let typePlayer1 = sessionStorage.getItem("valueOfHuman1");
@@ -134,7 +134,7 @@ const Winner = () => {
         (casillas[0].innerHTML == "X") && (casillas[4].innerHTML == "X") && (casillas[8].innerHTML == "X") ||
         (casillas[2].innerHTML == "X") && (casillas[4].innerHTML == "X") && (casillas[6].innerHTML == "X")) {
         setTimeout(() => { location.href = "winner.html"; }, 300);
-        sessionStorage.setItem("nameWinner",name1);
+        sessionStorage.setItem("nameWinner", name1);
 
     } else if ((casillas[0].innerHTML == "O") && (casillas[1].innerHTML == "O") && (casillas[2].innerHTML == "O") ||
         (casillas[3].innerHTML == "O") && (casillas[4].innerHTML == "O") && (casillas[5].innerHTML == "O") ||
@@ -144,9 +144,9 @@ const Winner = () => {
         (casillas[2].innerHTML == "O") && (casillas[5].innerHTML == "O") && (casillas[8].innerHTML == "O") ||
         (casillas[0].innerHTML == "O") && (casillas[4].innerHTML == "O") && (casillas[8].innerHTML == "O") ||
         (casillas[2].innerHTML == "O") && (casillas[4].innerHTML == "O") && (casillas[6].innerHTML == "O")) {
-        
+
         setTimeout(() => { location.href = "winner.html"; }, 300);;
-        sessionStorage.setItem("nameWinner",name2)
+        sessionStorage.setItem("nameWinner", name2)
     }
 }
 
@@ -197,7 +197,7 @@ const cpuFunction = () => {
     let positionMoreThree = position + 3;
     let positionLessThree = position - 3;
 
-    //Si esta vacia pinta una 0 coincidiendo con la casilla[numeroaleatoro]: Los siguientes 7 ifs
+    //Si esta vacia pinta una 0 coincidiendo con la casilla[numeroaleatorio]: Los siguientes 7 ifs
     if ((myTurn == false) && (player2.turn < 3) && (casillas[position].innerHTML == "")) {
         casillas[position].innerHTML = "O";
         Winner();
@@ -219,7 +219,6 @@ const cpuFunction = () => {
         Winner();
         player2.turn++;
         myTurn = true;
-        console.log("ESTOY EN IF 4");
     }
     else if ((myTurn == false) && (player2.turn < 3) && (casillas[positionLessTwo].innerHTML == "")) {
         casillas[positionLessTwo].innerHTML = "O";
