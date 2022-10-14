@@ -1,6 +1,6 @@
 let h1Winner = document.getElementById("winnerTitle");
 
-let nameWinnerXO = localStorage.getItem("nameWinner");
+let nameWinnerXO = sessionStorage.getItem("nameWinner");
 
 
 

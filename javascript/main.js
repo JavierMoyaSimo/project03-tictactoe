@@ -12,11 +12,11 @@ FunctionSaveNameOne = () => {
     // Validacion de que todos los campos(input y radio(Human/CPU) esten rellenos)
     if ((radioHumanOneValue == true) && (saveName != "")) {
         // Guardo el valor del input 1 en localstorage
-        localStorage.setItem("nameOfPlayerOne", saveName);
+        sessionStorage.setItem("nameOfPlayerOne", saveName);
         // Guardo el valor del boton radioHuman1 en localstorage
-        localStorage.setItem("valueOfHuman1", radioHumanOneValue);
+        sessionStorage.setItem("valueOfHuman1", radioHumanOneValue);
         // Guardo el valor del boton radioCpu1 en localstorage
-        localStorage.setItem("valueOfCpu1", radioCpuOneValue);
+        sessionStorage.setItem("valueOfCpu1", radioCpuOneValue);
         // Introduzco en el parrafo el nombre del Player 1
         namePlayerOne.innerHTML = ` Player 1 : ${saveName}`;
         //Vacio el input player 1
@@ -41,11 +41,11 @@ FunctionSaveNameTwo = () => {
     // Validacion de que todos los campos(input y radio(Human/CPU) esten rellenos)
     if ((radioHumanTwoValue == true || radioCpuTwoValue == true) && (saveNameTwo != "")) {
         // Guardo el valor del input 2 en localstorage
-        localStorage.setItem("nameOfPlayerTwo", saveNameTwo);
+        sessionStorage.setItem("nameOfPlayerTwo", saveNameTwo);
         // Guardo el valor del boton radioHuman2 en localstorage
-        localStorage.setItem("valueOfHuman2", radioHumanTwoValue);
+        sessionStorage.setItem("valueOfHuman2", radioHumanTwoValue);
         // Guardo el valor del boton radioCpu2 en localstorage
-        localStorage.setItem("valueOfCpu2", radioCpuTwoValue);
+        sessionStorage.setItem("valueOfCpu2", radioCpuTwoValue);
         // Introduzco en el parrafo el nombre del Player 2
         namePlayerTwo.innerHTML = ` Player 2 : ${saveNameTwo}`;
         //Vacio el input player 2
@@ -67,11 +67,11 @@ ChangeWindow = () => {
 // INFORMATION PANEL (play.html)
 
 //Recupero el nameOfPlayerOne del localStorage
-let name1 = localStorage.getItem("nameOfPlayerOne");
+let name1 = sessionStorage.getItem("nameOfPlayerOne");
 // Recupero el nameOfPlayerTwo del localStorage
-let name2 = localStorage.getItem("nameOfPlayerTwo");
+let name2 = sessionStorage.getItem("nameOfPlayerTwo");
 // Recupero el tipo de jugador 1 (Human o CPU) y lo escribo en el Panel de Informacion
-let typePlayer1 = localStorage.getItem("valueOfHuman1");
+let typePlayer1 = sessionStorage.getItem("valueOfHuman1");
 
 if (typePlayer1 == "true") {
     var nameType1 = "HUMAN"; // Usamos var para que el foco sea general; asi ya estara definida fuera del if.
@@ -79,7 +79,7 @@ if (typePlayer1 == "true") {
 }
 
 // Recupero el tipo de jugador 2 (Human o CPU) y lo escribo en el Panel de Informacion
-let typePlayer2 = localStorage.getItem("valueOfHuman2");
+let typePlayer2 = sessionStorage.getItem("valueOfHuman2");
 
 if (typePlayer2 == "true") {
     var nameType2 = "HUMAN";
@@ -134,7 +134,7 @@ const Winner = () => {
         (casillas[0].innerHTML == "X") && (casillas[4].innerHTML == "X") && (casillas[8].innerHTML == "X") ||
         (casillas[2].innerHTML == "X") && (casillas[4].innerHTML == "X") && (casillas[6].innerHTML == "X")) {
         setTimeout(() => { location.href = "winner.html"; }, 300);
-        localStorage.setItem("nameWinner",name1);
+        sessionStorage.setItem("nameWinner",name1);
 
     } else if ((casillas[0].innerHTML == "O") && (casillas[1].innerHTML == "O") && (casillas[2].innerHTML == "O") ||
         (casillas[3].innerHTML == "O") && (casillas[4].innerHTML == "O") && (casillas[5].innerHTML == "O") ||
@@ -146,7 +146,7 @@ const Winner = () => {
         (casillas[2].innerHTML == "O") && (casillas[4].innerHTML == "O") && (casillas[6].innerHTML == "O")) {
         
         setTimeout(() => { location.href = "winner.html"; }, 300);;
-        localStorage.setItem("nameWinner",name2)
+        sessionStorage.setItem("nameWinner",name2)
     }
 }
 
@@ -244,6 +244,7 @@ const cpuFunction = () => {
         casillas[position].innerHTML = "";
         let newCasilla0 = casillas[position];
         for (let i = 0; i < 8; i++) {
+            //sumo un turno para que, una vez escrita la "O", tenga 4 turnos y deje de recorrer el array.
             if ((casillas[i].innerHTML == "") && (player2.turn < 4) && (newCasilla0 != casillas[i])) {
                 casillas[i].innerHTML = "O";
                 Winner();
