@@ -7,7 +7,7 @@ Hola!
 
 ### Sobre el proyecto
 
-Este proyecto consiste en diseñar el famoso juego "Tic tac toe", jugando solamente con 3 fichas e intercambiándolas en el momento en el que ya estan todas jugadas en el tablero hasta conseguir la victoria.
+Este proyecto consiste en diseñar el famoso juego "Tic tac toe", jugando solamente con 3 fichas e intercambiándolas en el momento en el que ya están todas jugadas en el tablero hasta conseguir la victoria.
 
 Para empezar, podemos ver la página principal:
 <br>
@@ -27,7 +27,7 @@ Debemos rellenar los campos y darle a Confirm en los dos casos; sino saltará un
 <img src="./img/alert-all-names-complet.PNG" width="400em"/>
 <br><br>
 
-Si todos los campos estan correctamente rellenados y confirmados, pulsaremos al Start y nos llevará al terreno de juego.
+Si todos los campos están correctamente rellenados y confirmados, pulsaremos al Start y nos llevará al terreno de juego.
 Observamos que están correctamente rellenados, ya que así nos lo indica "Player 1" y "Player 2".<br>
 <img src="./img/everything-ok-player-selection.PNG" width="400em"/>
 <br><br>
@@ -79,4 +79,4 @@ Puedes ver este proyecto en <kbd>⇥</kbd> [GitHub pages](hhttps://github.com/Ja
 
 Autor: JavierMoyaSimo
 
-Última vez editado: 14/10/2022
+Última vez editado: 16/10/2022

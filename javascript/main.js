@@ -1,4 +1,4 @@
-// Funcion al darle click al boton de enviar (Datos PLAYER 1)
+// Funcion al darle click al boton de Confirm (Datos PLAYER 1)
 FunctionSaveNameOne = () => {
     // Guardo el valor de checked del boton radio Human del player 1
     let radioHumanOneValue = document.getElementById("radioHuman1").checked;
@@ -26,7 +26,7 @@ FunctionSaveNameOne = () => {
     }
 }
 
-// Funcion al darle click al boton de enviar (Datos PLAYER 2)
+// Funcion al darle click al boton de Confirm (Datos PLAYER 2)
 FunctionSaveNameTwo = () => {
     // Guardo el valor de checked del boton radio Human del player 2
     let radioHumanTwoValue = document.getElementById("radioHuman2").checked;
