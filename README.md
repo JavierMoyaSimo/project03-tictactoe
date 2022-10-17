@@ -57,7 +57,7 @@ Las jugadas de la CPU irán acto seguido, después de que el Player 1("human") r
 Si se realiza una combinación ganadora, accederemos automáticamente a la pantalla del ganador.<br>
 <img src="./img/congratulations-javi.PNG" width="400em"/>
 <br>
-En ella, contamos con el nombre del ganador, seguido de las enhorabuena.<br>
+En ella, contamos con el nombre del ganador, seguido de la enhorabuena.<br>
 Por último, si pulsamos el botón "New game", accederemos a la pantalla de selección de jugadores, para formar una nueva partida.
 <br>
 <hr>
@@ -71,7 +71,7 @@ Para este proyecto, estas son las tecnologías que han sido utilizadas:
 
 
 
-Puedes ver este proyecto en <kbd>⇥</kbd> [GitHub pages](hhttps://github.com/JavierMoyaSimo/project03-tictactoe/ "GitHub pages")
+Puedes ver este proyecto en <kbd>⇥</kbd> [GitHub pages](https://javiermoyasimo.github.io/project03-tictactoe/ "GitHub pages")
 
 <hr>
 

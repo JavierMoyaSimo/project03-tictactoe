@@ -90,7 +90,6 @@ if (typePlayer2 == "true") {
 };
 
 // OBETOS JUGADOR 1- JUGADOR 2
-// Creamos  CLASE Player
 class Player {
     constructor(name, turn, type, symbol) {
         this.name = name;
